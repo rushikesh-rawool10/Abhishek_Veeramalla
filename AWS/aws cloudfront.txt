@@ -1,0 +1,30 @@
+aws cloudfront
+
+CDN-- content delivery network
+
+cloud front is adding the edge capability
+
+advanctages
+1. reduce the latency
+
+2. large no of people accessing any webstite at a time hosting on s3 bucket that time cloudfront will reduce the cost
+
+==================================================================
+
+Step 1
+The client accesses a website and requests to download a file (like image file).
+
+Step 2
+Now, the DNS routes the client request to the nearest edge location through CloudFront to serve the user request.
+
+Step 3
+At edge location, CloudFront looks for its requested cache file. Once the file is found, CloudFront sends the file to the user.
+
+Step 4
+But, if the file is not found then CloudFront compares the requirements with the specifications and shares it with the respective server. 
+
+Step 5
+The web server responds to the request by sending the files back to the CloudFront edge location
+
+Step 6:
+As soon CloudFront receives the file, it shares it with the client and adds the file to the edge location
