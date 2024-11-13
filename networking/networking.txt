@@ -1,1 +1,62 @@
-networking
+Networking
+
+
+8 bits--> 1 byte
+
+255.255.255.255
+7 6 5 4 3 2 1 0
+2 2 2 2 2 2 2 2 
+
+subnet-->divide whole network into sub parts
+eg. finance diff n/w public use diff n/w--if hacked imp data will not be compromised
+
+public--with internet access
+private --with no internet access
+
+
+subnet--> security
+			privacy
+			isolation
+			
+			
+			aws-->vpc-->subnet-->CIDR
+			
+			
+			for CIDR  32 - digit
+			172.68.3.0/24--> 32-24=8, 2~8=256--> 256 ip addresses
+			
+---------------------------------------------------------------------------
+
+security group--at EC2 level
+
+NACL --at subnet level
+
+NACL--> deny or allow--additional level of security
+
+security group--> only allow option
+
+---------------------------------------------------------
+
+VPC Project
+
+do not create ec2 instances manually
+create ec2 instances using auto scaling group--use launch template
+
+Ec2 instaces will get created in private subnets and will not have any public IP addresses
+
+to connect to ec2 instances in private subnet, we need craete a bastion host or a jump server
+
+while crating launch template mention key-pair
+we need to copy this key pair to bastion host to connect further in ec2 in private subnet
+
+cd downloads
+scp -i /downlaods/login.pem /downlaods/login.pem ubuntu@ip_of_bastion_host
+
+ssh -i login.pem ubuntu@private_ip_of_ec2
+
+
+create load balancer in public subnet
+
+load balancer require target group(of ec2 instances)
+
+to check the app running on browser, copy DNS name from Load Balancer
