@@ -1,0 +1,28 @@
+AWS IAM
+
+Authentication vs Authorization
+
+first you have to authenticated person to bank
+then authorizations means whats are the bank services are accssible to you
+
+User-->policies
+ID-501---> DB(Read),  K8S(access),  do not have  delete access
+
+in organization many person join/leave, every time time we can not add user and give each policies
+so create groups like DBA,Devlopers, server, OPS
+
+Roles are likes users only but roles are used to cummuniocate between 2 aws services
+roles have username & passwords
+they are temporaray so can not be hacked
+
+
+IAM--create user--i want to create IAM user
+auto generated password
+user must create new passoword for next sigh in
+
+================================================
+create group 
+developer group
+attach policies
+add users to the group
+modfiying polices to the group

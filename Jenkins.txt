@@ -1,0 +1,10 @@
+Jenkins
+
+
+		Jenkins
+		  |
+		  Maven---> Build code/ unit testing using Junit
+		  |
+		  Sonar--> code quality & code testing
+		  |
+		  ALM/Reporting Tool

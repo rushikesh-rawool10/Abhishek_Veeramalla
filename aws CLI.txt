@@ -1,0 +1,40 @@
+AWS CLI
+
+API--> apllicaion programming interface
+
+AWS CLI --pythin utility
+python must be installed
+
+AWS CLI--->>convert into API---> AWS Resources
+
+===============================installation====================================
+
+git bash on your windows machine
+
+follow aws documentation
+
+aws --version
+
+to connect with AWS account
+aws configure
+
+to get access key & secret key--> aws account--> security credentials--access keys-->we can also create new access key 	
+
+AWS resources that we can crete using AWS CLI:
+AWS s3 ls--> list out s3 buckets
+EC2
+basically used to get quick information 
+complex tasks ca not be performed --for that we use cloud formation template which using yml file in structured format
+
+
+====CLi vs CFT===================
+
+for short and quick actions--> CLI
+
+
+CFT--> Infrastructure creation
+
+
+CFT--> Json & YML
+
+CFT--> Infrastructure creation + Drift Detection

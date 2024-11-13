@@ -1,0 +1,19 @@
+route53
+Domain name system (DNS)service
+
+amazon.com
+flipkart.com
+route 53 resolves domain name to IP address of Load balancer IP or application IP
+
+route 53 does below:
+Domain registaration -->internal or external(godaddy)
+hosted zones(list of domaain names associated with IP's)
+health checks(send request to web servers and do health-check)
+
+
+Elastic IP Address--static IP adress--which never changes
+
+NAT gateway-- it will mask the IP addeess of ec2 instance/application with the public IP adress of NAT gateway
+
+NAT gateway use for internet access for private subnet
+EC2 outbound rules-->NAT gateway

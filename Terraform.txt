@@ -1,0 +1,272 @@
+Terraform
+
+AWS Cloud Formation (CFT) is restricted with AWS 
+
+Terraform converts terraform-script into API calls and get the results
+
+API as code
+
+
+Terraform solves the problem of learning and implementaion on infra using different methods as per cloud providers
+
+
+no need to learn different methods as per cloud provides, terraform will talk through API with diff cloud providers
+
+====================Advantages=================
+
+Manage any infrstructure--aws/azure/GCP
+track your infrastructure--no neeed to login cloud provider and check,all info in state file
+automate changes--save on git and run through jenkins,no need to login cloud console
+standardize configurations--standard conf for any cloud provider
+collaborate --collaborate with peers, review and deploy
+
+============================================================
+insted of saving state file in local, save in remote
+
+=================================================
+
+input and output file
+no need to hard code resource value, use input or variable file
+outfile file to show resource value after apply, like pub/private ip, instace-id etc
+
+
+----------------------------------------------------------------------------------------
+
+
+main.tf file
+in which we write core logic
+
+required_version = ">=1.2.0"  -->>terraform CLI version
+
+=======================Good practice for state file===============
+
+do not locally
+do not store on version control system
+do not manipulate state file locally
+always store remotely means s3-->dynamo db
+
+                                AWS
+							_____|______
+							|           |
+						local_state	   remote_state
+						    |                |
+						  main.tf         main.tf
+						
+						=========================================
+Using Terraform when we need to use third party tool(docker), then
+
+
+terrafom block{
+
+	required_provider block{
+	
+	aws/azure/GCP{
+	
+	source=
+	version=
+	}
+	}
+}
+
+=========================================================================
+terraform.tf
+
+terraform{
+
+required_provider {
+
+        docker=
+		{
+		source=
+		version=
+		}
+} 
+
+}
+
+-----------------------------------------------------------------------
+#######Block Resource {Arguments}###################
+
+
+
+resource "resource parameter" "resource parameter name"{
+
+				resource arguments
+				resource arguments
+}
+
+arguments which we type manually & attributes means terraform creates manually
+=========================================================
+main.tf
+
+provider "docker" {}
+
+resource "docker_image" "nginx"{
+			name = nginx:latest
+			keep_locally = false
+}
+
+resource "docker_container" "Nginx"{
+
+			name= nginx_ctr
+			
+			image= docker_image.nginx.name
+			
+			ports{
+				internal=80
+				external=80
+			}
+}
+============================================================================
+Terrafrom init--> initialises terraform block, the code inside of terraform block, will execute
+install plugins etc
+
+------------------------------------------------------------------------
+
+Use internal resources within terraform code using "Interpolation"
+
+resource "aws_key_pair" "my-key"{
+	key_name = terra_key
+	key
+}
+
+resource "aws_instance" "my-vpc-instance"{
+	key = aws_key_pair.my-key.key_name <--- Interpolation
+}
+
+=============================Error===========
+╷
+│ Error: creating EC2 Instance: InvalidAMIID.NotFound: The image id '[ami-0eba6c58b7918d3a1]' does not exist
+│       status code: 400, request id: df9bce59-7e6e-4d11-8abf-f749dff33213
+
+
+
+It was simple. Apparently, AMI for Amazon Images of each region is different. I had to copy the AMI of the image that was present in my region. For example ami-07dfba995513840b5 is the id for Red Hat Enterprise Linux 8 (HVM), SSD Volume Type in eu-central-1 region. Go to AWS console, click EC2 from all services list, next click launch instance and find the AMI of an image of your interest.
+
+problem--in provider block, region mentioned is 'us-east-1'
+and I am giving ami id for tokyo region
+each reegion ami id will be different
+
+===========================================================================
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+~
+
+----------------------
+ provider "aws"{
+        region = "ap-northeast-1"
+}
+
+
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
+resource "aws_instance" "terra-prac" {
+        ami = var.ec2-ubuntu-ami
+        instance_type = "t2.micro"
+         tags = {
+    Name = "terra-instace"
+  }
+}
+~
+---------
+variable "ec2-ubuntu-ami"{
+        default="ami-0eba6c58b7918d3a1"
+}
+
+variable "ec2-amazon-linux-ami"{
+        default="ami-0c1de55b79f5aff9b"
+
+}
+---------------------------------------------------------
+
+terraform destroy -target=module.qa-demo-app
+
+terraform apply -target=module.qa-demo-app
+
+----------------------------------------------------
+
+Terraform Backend
+
+to store terraform.tfstate file in remote
+
+create   	backend_infra.tf
+
+resource "aws_s3_bucket"
+
+resource "dynamo_table"
+
+
+--go to project
+choose a project of that, terraform.tfstate file you want to store. Go to terraform.tf file of that project
+
+
+terraform  {
+
+required_providers {
+	aws = {
+		source=
+		version=
+	}
+}
+
+backend "s3" {
+	bucket = ""
+	dynamodb_table = ""
+	region = ""
+	key ="tfstate file name"
+}
+}
+------------------------------------------------------------------------
+
+Storing terraform.tf file on remote
+
+If we store on a version control system, all resource details will be visible/accessible to anyone.
+
+If we keep it locally, it will be restricted to only one person. When another person tries to change, the terraform state will not be consistent.
+
+
+create backend folder
+craete first s3 bucket & dynamodb table
+s3 bucket--> storing tfstate file
+dynaodb table --> locking state
+
+backend.tf
+
+terraform {
+ required provider{
+ aws
+ }
+ 
+ resource "aws_s3_bucket"{
+  bucket =
+ 
+ }
+ 
+ resource "aws_dynamodb_table ""{
+ 
+ }
+}
+
+imporatnt---->the tfstate file of a particular project which you want to save on remote, go to that project--> select terraform.tf file and add below backend {} block inside terraform block##this is important
+if you provide outside of terraform block, you will get unsuppported block type
+
+
+
+module-demo-backend-bucket
+backend-table
+terraform.tfstate
+
+ 
+terraform destroy -target=module.dev-demo-app
+
+terraform apply -target=module.dev-demo-app

@@ -1,0 +1,9 @@
+EC2
+
+depends on appliacation requirement we will choose ec2 type
+
+general purpose
+compute optimized
+storage
+memory
+accelerated

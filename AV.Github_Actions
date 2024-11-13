@@ -1,0 +1,49 @@
+Github actions
+
+https://github.com/iam-veeramalla/GitHub-Actions-Zero-to-Hero/blob/main/.github/workflows/first-actions.yml
+
+Github hosted runner---->
+jobs:
+  build:
+    runs-on: ubuntu-latest
+	
+	
+Github hosted runner has securtity concerns when it comes to enterprise application/ private repo 
+	
+	
+	
+------------------------------------------------------------------
+to configure self hosted runner
+setupn an ec2 instance
+security groups
+inbound & outbound rules--> HTTP & HTTPS open
+
+inbound--> github to ec2
+outbound--> ec2 to github back to send job completion trigger
+
+
+self hosted runner--
+
+github settings--> Actions--> runner-->OS-->Architecture
+------------------------------------------------------------------------------
+
+Why you used GIthub actions ised of jenkins/aws code build
+
+If your project is public project then it is ok to use github actions, as github provides many free resources to run your project
+
+This project is already on github, we managed everything on github 
+
+we are using github utlities like  wiki,security, insights to the fllest.
+
+-------------------------------------------------------------------
+
+different  ways to triggers jenkins job
+
+Poll SCM-- like crontab job--
+
+Build trigger--it is costly, if set for every 1 min. then i will chck for any jenkins job after every 1 min.
+
+Webhooks- They preferred. as anu code commit/push happened , it will triggred
+
+
+https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero/blob/main/Interview_Questions.md

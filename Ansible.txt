@@ -1,0 +1,188 @@
+Ansible
+
+Ansible server-->Target server--
+
+ things must--
+ip add of target
+22 port i.e ssh enabled
+
+
+on ansible server create ssh keygen
+copy pub key to target ---in authorised_keys
+
+then for ssh do----ssh Privte_ip_add_of_target
+
+1. simple task use ansible ad-hoc command
+
+ansible -i inventory -m "shell" -a "touch devops"
+
+2. ansible playbook
+
+write playbook in yml file , which contains no.of tasks to be executed
+
+3. if no. of tasks are more use ansible role
+
+ansible-galaxy role init kubernetes
+
+===========================Another way of passwordless authentication(TWS)=========
+
+copy private pem key from local to master server
+use ssh using pem key to connect target server
+
+by default host file---> /etc/ansible/hostes
+
+
+create variable for pem key
+
+[:vars]
+ansible_ssh_private_key_file=/home/ubuntu/keys/ansible-demo-master-key.pem
+
+
+[servers]
+server_1 ansible_host=18.97.90.21
+server_2 ansible_host=19.98.34.54
+server_3 ansible_host=20.45.89.67
+
+[servers:vars]-->below all variables  will be apply to all servers in servers_group
+ansible_ssh_private_key_file=/home/ubuntu/keys/ansible-demo-master-key.pem
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=ubuntu
+
+===========================================deploy static web page=======
+
+install and start niginx code is same----
+
+for static web page add below in playbook file
+
+- name: deploy web page
+  copy:
+	src:index.html
+	dest: /var/www/html/
+	
+	
+	
+-----crete file on target using ansible adhoc command witout using playbook
+
+ansible -i inventory all -m "shell" -a "touch devops"
+
+all/(if one ip, give that ip)/group for multiple ip's
+m---module--> "shell", "copy"(type of a task)
+-a---arguments
+
+=========================================Playbook======
+                    Multiple tasks in  one file
+					
+---(indicates it's a playbook file)
+- name: Install and Start Nginx
+  hosts: all
+  becomne: root
+  
+  tasks: 
+  
+- name: My second playbook
+
+============================================================================
+---
+- name: Install and Start Nginx
+  hosts: all
+  becomne: root
+  
+  tasks:
+  - name: Install Nginx
+    shell: apt install nginx
+	
+======================================================================OR====
+---
+- name: Install and Start Nginx
+  hosts: all
+  becomne: root
+  
+  tasks:
+  - name: Install Nginx
+    apt: 
+		name: Nginx
+		state: present
+		
+  - name: Start nginx
+	service:
+		name: nginx	
+		state:strarted
+		
+		or
+  - name: Start nginx
+	shell: systemctl start nginx
+	
+	==========================================Run=========================
+	ansible-playbook -i inventory first-playbook.yml
+	
+	ansible-playbook -vvv-i inventory first-playbook.yml
+	
+	-vvv--> verbosity(debug)--detailed ansible logs
+	
+	=======================================Ansible Roles=======================================
+	
+
+Efficient way of writing playbooks For complex playbook					
+
+
+ansible-galaxy role init kubernetes
+
+why ansible-roles
+when need to install kubernetes using ansible will have more no.of tasks, lot of variables.lot of paramters. When use ansible-role, we can properly segragate ans structure playbook
+
+
+==============================================================================
+configuration managwment is process/method of manageing your software/system/hardware.
+for 100's of server in an oraganization, when want to installation of packages/upgradation of sofwares/manditory installations/install patches
+
+why ansible--
+push based
+agentless--> in other tools need to configure master-slave nodes, in ansible need to have passowrdless connection between ansible server and that server
+
+dynamic inventory
+ansible check in your aws account for newly created VM's and update the invetory
+
+Ansible Tower---
+GUI based
+addional functionality
+Enterprise edition
+
+
+handlers---
+when want to execute conditional tasks
+
+
+specific tasks on windows and not on linux?
+using ansible tags and environmental variables
+
+
+to coonect to windows which protocol?
+WinRM
+ssh-linux
+
+secret management--
+use hashicorp vault
+
+=========================================
+not efficient with windows as much
+not as good for debugging
+===========================================================
+
+while writung a playbook,(be a generic) always go with package manager like--apt,module like service
+
+ansible-inventory list--to see ansible host,variables etc
+
+
+ansible-limit---to limit the no of hosts
+
+=========================================================================================
+
+Ansible roles
+
+ansible-galaxy role init  kubernetes
+
+
+	
+		
+		
+	

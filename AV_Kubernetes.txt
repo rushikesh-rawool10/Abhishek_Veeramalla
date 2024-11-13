@@ -1,0 +1,301 @@
+Kubernetes
+
+Docker issues---
+
+running on single host
+daemon is main process, single point of failure
+no auto healing, if container dies, will not automatically restart
+no auto scaling
+------------------------------------------------------
+container runtime
+
+containe will not run without container runtime
+
+in docker--> docker stim is runtime
+
+k8s supports all runtime --? docker stim, docker d, crio
+
+kubelet--resposible for auto healing
+
+kube proxy--> networking
+----------------------------------------------- 
+
+Worker node componenets(Data Pane)--> container runtime
+							kubelet
+							kube proxy
+							
+---------------------------------------------------------------
+Master NOde (Control pane) 
+
+scheduler--> responsible for scheduling pod. IT decides on which node, pod will run. It recives info from API server
+
+api sERVER --> Heart od k8s
+etcd--It is a key value store
+	  store backup information related to kubernetes cluster 
+	  
+controller Manager--> Supports auto scaling
+replica set maintains state of  k8s pod
+
+cloud controler manager
+
+The cloud-controller-manager is a Kubernetes control plane component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.
+
+----------------------------------------------------
+
+kubectl is CLI for k8s
+--------------------------------------------------
+pod.yml is similar to docker run -d -p 8000:8000 nginx:latest
+
+kubectl create -f pod.yml OR
+
+kubectl apply -f pod.yml
+
+kubectl get pods
+
+kubectl get pods -o wide (detailed)
+
+kubectl cheat shits---google it-all kubectl commands
+
+kubectl get pods -w (live watching)
+
+kubectl get all
+
+kubectl get deployments
+
+kubectl get rs  (replica set)
+
+====================================================
+
+Deployement -->Replica-set -->pod
+
+Deployment will create replica set then replica set using replica set controller create pod
+
+------------------------------------------------------------------------------------
+
+Service(svc)--> load balancing
+		    -->service discovery
+			
+Labels and selectors in yml file 
+
+---------------------------------------------
+
+yml---
+      |
+	  --->cluster IP--> inside k8s cluster--> discovery & load balancing
+			NOde port--> inside oraganization---> worker node access
+			Load balancing-->external world
+			
+			----------------------------------------
+			
+
+ 
+ 
+
+Svc
+
+Custer IP- accessible only to those who is having access to kubernets cluster
+
+
+
+Svc- load balancer
+
+Who has access to internet can access the application
+
+
+
+Svc- node port
+
+Who have access to worker node can access the application
+
+
+
+Question 8
+
+What is the difference between NodePort and LoadBalancer type service ?
+
+When a service is created a NodePort type, The kube-proxy updates the IPTables with Node IP address and port that is chosen in the service configuration to access the pods.
+
+Where as if you create a Service as type LoadBalancer, the cloud control manager creates a external load balancer IP using the underlying cloud provider logic in the C-CM.
+
+Users can access services using the external IP
+
+
+
+Question 1
+
+Question 2
+
+What is the difference
+
+Docker and Kubernetes ?
+
+What are the main components of Kubernetes architecture?
+
+Docker is a container platform where as Kubernetes is a container orchestration
+
+On a broad level, you can divide the kubernetes components in two parts
+
+environment that offers capabilities like Auto healing, Auto Scaling, Clustering and Enterprise level support like
+
+Load balancing.
+
+1. Control Plane (API SERVER, SCHEDULER, Controller Manager,
+
+C-CM, ETCD)
+
+2. Data Plane (Kubelet, Kube-proxy,
+
+Container Runtime)
+
+
+
+Question 3
+
+Question 4
+
+What are the main
+
+differences between the Docker Swarm and Kubernetes?
+
+What is the difference between
+
+Docker container and a
+
+Kubernetes pod ?
+
+Kubernetes is better suited for large organisations as it offers more scalability, networking capabilities like policies and huge third party ecosystem support.
+
+A pod in kubernetes is a runtime specification of a container in docker. A pod provides more declarative way of defining using YAML and you can run more than one container in a pod.
+
+
+
+Question 5
+
+What is a namespace in Kubernetes ?
+
+In Kubernetes namespace is a logical isolation of resources, network policies, rbac and everything. For example, there are two projects using same k8s cluster. One project can use ns1 and other project can use ns2 without any overlap and authentication problems.
+
+Question 6
+
+What is the role of kube proxy?
+
+Kube-proxy works by maintaining a set of network rules on each node in the cluster, which are updated dynamically as services are added or removed. When a client sends a request to a service, the request is intercepted by kube-proxy on the node where it was received. Kube-proxy then looks up the destination endpoint for the service and routes the request accordingly.
+
+Kube-proxy is an essential component of a Kubernetes cluster, as it ensures that services can communicate with each other.
+
+              
+
+Question 10
+
+Day to Day activities on
+
+Kubernetes
+
+
+
+Question 9
+
+What is the role of Kubelet ?
+
+
+
+Kubelet manages the containers that are scheduled to run on that node. It ensures that the containers are running and healthy, and that the resources they need are available.
+
+Kubelet communicates with the Kubernetes API server to get information about the containers that should be running on the node, and then starts and stops the containers as needed to maintain the desired state. It also monitors the containers to ensure that they are running correctly, and restarts them if necessary.
+
+
+
+To get the details of pods
+
+Kubectl get pods -v=7
+
+
+
+Kubectl apply -f service.yml
+
+
+
+Kubectl get svc
+
+
+
+Access application using node Port
+
+
+
+Curl -L http://EC2 ip (minicube ip):node port IP/demo
+
+
+
+Service.yml
+
+Using service, we can achieve below things:
+
+Service auto discovery- using labels and selectors
+
+Expose app - using node port, cluster ip, load balancer
+
+Load balancing
+
+
+
+
+
+----ingress--
+
+Kubernets were missing some enterprise level capabilities like->
+TLS load balancing
+
+Sticky sessions
+
+Path based load balancing
+
+Host based load balancing
+
+Ratio based load balancing
+
+
+
+For each load balancing service cloud provider will charge you
+
+
+Ingress controller- load balancer
+
+
+
+Type of Ingres controller- like nginx Ingres controller
+
+F5 ingress controller
+
+
+
+Ingress controller-> ingress -> routing rule-> service (how to access application) -> pod
+
+
+traditional ingress  was missing enterprise level capabilities like
+sticky
+path
+tls
+host
+ratio based
+
+and was charging for services
+if there are 1000's of services, were charging for 1000's static public ip adds
+
+nodeport comes in ip ranges-- it is not good practice that we need to open no. of ports
+
+-------------------------------------------------------------------------------------
+
+kubernetes service is used for accessing application in diff ways like
+
+cluster IP
+nodeport
+load balancer
+
+Kubernetes Ingress adding more rules to access application using kubernetes service
+
+ingress controller-----
+
+ingress controller watching ingress
+ingress contoller is provided by companies like nginx, apache, f5, ambasaddor
+

@@ -1,0 +1,10 @@
+S3 is globally accessible service
+
+When it gets create it creates in a region
+
+security----
+bucket polocies,access control, encryption
+
+bucket versioning
+
+static web site hosting using s3 bucket.(need public access to file)

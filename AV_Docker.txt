@@ -1,0 +1,162 @@
+AV.Docker
+
+Multistage docker
+
+
+in single docker file---
+
+two base images
+
+
+from ubuntu(for build)
+
+copy
+
+Run
+
+
+no CMD command
+
+From open jdk(for run)
+
+copy from build
+
+cmd [app.java]
+
+---------------------
+build image is of 1.5 GB
+run image is of 100mb, so final image which build is of 100 MB only
+
+====================================================================================
+
+Distroless images
+
+very minimalistic
+hardly have any packages
+only runtime build packages
+
+
+==========================================================================
+
+###########################################
+# BASE IMAGE
+###########################################
+
+FROM ubuntu AS build
+
+RUN apt-get update && apt-get install -y golang-go
+
+ENV GO111MODULE=off
+
+COPY . .
+
+RUN CGO_ENABLED=0 go build -o /app .
+
+############################################
+# HERE STARTS THE MAGIC OF MULTI STAGE BUILD
+############################################
+
+FROM scratch
+
+# Copy the compiled binary from the build stage
+COPY --from=build /app /app
+
+# Set the entrypoint for the container to run the binary
+ENTRYPOINT ["/app"]
+============================================================
+
+using distroless images, not only we achieved reduction in images size but also we made app mre secure i.e. less vulnarable to threats
+
+======================================Docker Networking===============
+
+how container talks with host
+
+
+when we create a container, docker bydefault creats a virtual ethernet(veth) i.e. 'docker0' which called as Bridge Networking(default networking)
+
+eth0 of host & eth0 of container talks with each other using veth i.e docker0
+
+when there are two containers and one of them is handling confidential data, these two containers will talk with host using veth i.e dockero, But this  will be risky as there is single point of connection and data can be hacked.
+
+==============================================
+
+docker run -d --name logout nginx:latest
+
+docker inspect login (name of the container)--> to get IP adress of container & to check n/w of container
+
+docker network create secure-network(name)
+
+docker network ls
+
+docker run -d --name finance --network=secure-network nginx:latest
+
+login---bridge n/w
+logout--bridge n/w
+finance-- custom n/w(name==secure network)
+
+if we go inside login container and try to ping finance container , it will not ping
+
+another type is host network
+
+docker run -d --name host-demo --network==host nginx:latest
+
+for host networking, container ip address will be same as of instance ip address
+
+
+============================================================================
+
+docker components
+
+docker cli
+docker host
+docker registry
+
+--------------------
+
+docker deamon is very much imp like jenkins master
+docker daemon executes docker actions like build, run, pull
+
+----------------------------
+
+docker add from files from URL
+
+docker copy---copy files from your host system into the container
+
+----------------------------------------------------------
+
+CMD vs Entrypoint
+arguments which can be overridden can be given with CMD and vice versa
+
+--------------------------------------------
+Types of Networking
+
+Bridge
+Overlay
+Host
+MacVlan
+--------------------
+we can create custom bridge network
+
+docker network create secure-network(name)
+
+in this, docker will create a different CIDR block for docker container
+
+-----------------------------------------------------
+
+multi stage build allows you to build your docker container in multiple stages, allowing you to copy
+artifacts from one stage to another.
+The major advantage of this to build light weight continer
+------------------------------------------------------------
+
+distoless images contain  only your application  and it's runtime dependancies with a very minimum operating system libraries.
+They do not contain package managers, shells or any other programs you would expect to find  in a standard linux distribution
+
+
+--------------------------------------------
+HOw to secure app usng container
+
+Using Multi-stage build--reduced iamge size
+Docker neteworking-- isolate services(login/logout/finanace)
+distro less image-- very light wieght images plus less vulnerabilities
+
+

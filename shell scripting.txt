@@ -1,0 +1,9 @@
+OS acts as medium bt]etween HW & SW
+
+kernel is a heart of OS
+
+kernel resposible for--
+device managemenet
+memeory management
+process mgmt
+handling syste calls

@@ -1,0 +1,101 @@
+git
+installation on ubuntu 
+sudo apt install git-all
+
+to make git direcory
+go inside that directory and do
+git init
+===============================================
+Git diff - to see the difference between changes
+
+Git log - to see the logs
+
+Git reset --hard commit id
+
+Branches-- 
+
+Master / main branch by default
+
+Feature branch
+
+Release branch
+
+Hotfix branch
+
+
+Master branch need to be be updated every time
+
+Later Feature and hotfix branches should be merged with master branch
+
+
+Hotfix branch means emergency changes need to fix on the production. It stay there for 2/3 days
+
+After need to merge with master and release branches and end of the day  release branch need to deliver to customer
+
+=====================================
+If want go with previous version 1
+first git log
+check for commit id that you want go with, copy it
+git reset --hard commit id
+
+=======================================
+Master/main branch
+feature branch--different feature branch for different features and will merge to master branch
+release branch--all features are tested and working properly and need to deliver to customer and want to test the working.
+
+for deleivery to customer instead of using master, use release because on master branch developers actively working and not for all the time new features need to deliver to customer
+so create separate/tested branch for release i.e release branch
+
+hotfix branches--if customer facing some major issue in app and need to fix/release that immedaitly
+then use hotfix
+
+================================
+git rm --cached (for stage to unstage)
+
+git reset --hard commit id  (choose a version that is required)
+
+===============================
+git clone url---folder get downloaded
+if go go inside that coled folder and do git remote -v
+it will show origin
+
+to create remote reference to your git local repo, use git remote add "url"
+
+===============================================================================
+Fork vs Clone
+
+Fork--to create a copy of a repository
+
+clone--download a spcific repository 
+
+==========================
+cheery-pick vs merge vs rebase
+
+cherry-pich--> when there are less commit to merge
+git log division
+--commit id of new commit
+git cherry-pich commit id of division that you want merge with main branch
+
+================================================
+merge vs rebase
+
+in rebase we get linear commit history
+in merge we do not get lenear commit history
+
+=====================================================
+
+daily command use in organizaion
+
+git add && git commit -m "" && git push
+
+in local, go to any repo and do git remote -v, it will show remote reference url
+=======================
+
+git brach--to check all existing branches
+
+=====================
+
+git log ==oneline--to see shorter commit ids
+
+
+

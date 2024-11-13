@@ -1,0 +1,40 @@
+VPC
+
+Region (land)
+VPC (secured area)
+how much secured area?---> ip-address range  192.178.0.0/16--65536
+
+192.178.0.0/16--65536-->Subnets 192.178.1.0/24
+						        192.178.2.0/24
+						        192.178.3.0/24
+						
+Internet request--->Internet gateway-->Public subnet--->load balancer--target group-->private subnet/appliacation-->route table-->security group
+
+The website you are accessing should not not know the ip address of your private subnet/application
+need masking of ip address
+maskingof ip address--NAT
+
+security is shared resposibility
+
+security group-->inbound + outbound rules
+
+inbound --by default --none--no one is allowed--to access define ip adress in inbound rules
+
+outbound--ec2 to outside--by default all open except port 25--mail service
+
+security group at ec2 level
+NACL at subnet level
+NACl additional layer of security
+
+security group has only allow rules
+in NACL has both allow and Deny
+
+as secuity group at instace level, every time we need to configure for each instace
+in NACL we can directly apply to 10k instaces
+
+
+NACL is first level of defence, as SG at ec2 level we do not have control on each ec2 instance,
+we can set rules allow/deny in NACL and attach to vpc, so it apply to ec2 instaces created inside vpc's
+
+NACL follows ascending order
+if it allows all traffic at no.1 & deny 8000 at no.2, it will pass through NACL

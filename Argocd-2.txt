@@ -1,0 +1,40 @@
+argocd-2
+
+do changes  in k8s manifest files through git, do directly modify in k8s cluster. 
+If modificain doone directly through k8s, argocd will revoke  them
+
+====================================================
+
+hub-spoke model vs standalone model
+
+hube-spoke  model
+
+kubectl config get-contexts | grep us-wes-1
+
+swittch to hub contexts
+
+kubectl config use-context 
+
+kubectl config current-context
+
+to run api server in insecure mode---->
+
+https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+
+## rrun server without TLS
+	server.insecure:"false"
+
+
+kubectl edit configmap argocd-cmd-params-cm  -n argocd
+
+=====================
+
+login to hub cluster (UI) 
+
+secret password decode base64
+
+install argocd cli
+
+argocd login through CLI
+
+aargocd cluster add context-spoke_1 ip:nodeport_of_api_server 

@@ -1,0 +1,28 @@
+YT Interview
+
+HOw you would design pipeline for a new customer
+1. understand the requiremnet and go throgh architecture
+depends on how the code is like cpu intensive or memory/iops intensive, we decide the build and deploy instance
+
+aws code build deploye
+
+code scanning tools for security
+
+what are security vulnerability you found in project
+22 port not need to open- suggestions
+wheere you use port of application--in dockerfile
+If you do not provide explictly the username in the dockerfile, it will use root as default and this not a good practice
+
+if developers uses a dev branch or a feature how you integrate with them
+we have separate account for dev/stg and qa
+
+
+you deployed the code to the production, and after 10 days if client ask you which version of app is currently running?
+app release comes with major and minor version--so that you can tell with client
+
+diff bt app/networl load balancers
+
+in s3 there is a sensetive data in it, how will you protect.
+
+first using IAM, apply strict access policy
+KMS key

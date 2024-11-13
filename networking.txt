@@ -1,0 +1,14 @@
+Networking
+
+
+8 bits--> 1 byte
+
+255.255.255.255
+7 6 5 4 3 2 1 0
+2 2 2 2 2 2 2 2 
+
+subnet-->divide whole network into sub parts
+eg. finance diff n/w public use diff n/w--if hacked imp data will not be compromised
+
+public--with internet access
+private --with no internet access

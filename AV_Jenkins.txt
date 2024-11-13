@@ -1,0 +1,55 @@
+Jenkins
+
+
+		Jenkins
+		  |
+		  Maven---> Build code/ unit testing using Junit
+		  |
+		  Sonar--> code quality & code testing
+		  |
+		  ALM/Reporting Tool
+		  |
+		  K8's/Docker
+		  
+		  
+Jenkins Limitations--------
+
+As load increases, more compute power is required
+
+no scale up/down facility-Scalability Challenges
+
+ Complex Setup and Maintenance	 
+
+Limited Support for Containerization and Orchestration
+
+not fully event driven where gitlab is by default even driven
+
+
+
+------------------------------------
+
+use master for scheduling purpose
+
+if everything runs on same instance, then it will have conflicting packages for diff app like 
+some app needs java-7 /some java-11--python of diff versions etc.
+
+
+
+---------------------------------------------------
+Freestyle Projects
+Use GUI to add different stages and steps
+More suitable for less complex scenarios
+Good for people who are starting to use Jenkins/ CI solutions
+Can become hard to achieve what you want when your scenario become more complex
+
+Pipeline Jobs
+Use code (Groovy language - this is a Java like language) for giving instructions
+Since, everything in one script you can keep that in the source control and have ability to revert back to an earlier version at any time or keep track of changes made to the script
+Entire, pipeline consists of steps (ex: build, test, deploy etc..)
+Created using a Jenkinsfile
+Jenkinsfile can be one of two of below types
+
+Declarative Pipeline (Requires blue ocean plugin to use graphical pipeline editor)
+Scripted Pipeline
+
+ 

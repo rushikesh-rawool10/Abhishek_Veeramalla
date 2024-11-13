@@ -1,0 +1,45 @@
+prometheus & Grafana
+
+minikube start --memory=4098 --driver=hyperkit, if we not use hyperkit it will use docker desktop as default and that needs additional network settings
+
+minikube start --memory=4098 --driver=hyperkit
+
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+
+curl -L http://192.168.49.2:31506/
+
+
+minikube_ip:nodeport
+
+expose service kube_state_metrics as nodeport to get all metrics information
+
+how to access--> minikube_ip:nodeport/metrics
+
+how to get metrics information inside prometheus=====
+
+kubectl get cm (configMaps)
+
+cm--> prometheus-server
+
+kubectl edit cm prometheus-server
+
+this will have all info about prometeus is scraping (prometheus.yml)
+
+inside scape_configs:
+  
+   scape_configs:
+   - job_name: prometheus
+	 static_configs:
+	 - targets:
+	   - localhost: 9090
+	
+   - job_name: kube_metrics
+	 static_configs:
+	 - targets:
+	   - minikube_ip: nodeport_of_kubeConfigs
+
+
+
+
+
+

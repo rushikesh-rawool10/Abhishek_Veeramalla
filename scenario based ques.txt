@@ -1,0 +1,31 @@
+Design VPC with High availability and scalability
+
+for High availability ---2 AZ'scalability
+for scalability--- auto scaling group
+
+NACL vs Subnet
+
+Security group at instance level
+ NACL at subnet level
+ 
+ IAM roles are basically attched to aws services
+ 
+ 
+ 
+ Important===================
+ 
+ NACL vs Security groups
+ 
+ subnet vs security groups
+ 
+ subnet--> IP ranges & CIDR block
+ 
+ security groups--> at instance level--> allow IP/PORT
+ 
+ NACL at SUBNET level--> allow or deny traffic baed on IP/PORT/Protocol
+ 
+ security groups-->inbound and outbound traffic only allow option in settings
+ 
+ NACL--> inboud and out bound traffic--> allow & deny plus priority settings
+ 
+ 

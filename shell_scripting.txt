@@ -1,0 +1,65 @@
+shell scripting
+
+set  -x  --> debug mode
+output
+
++df -kh
+output
+
++free -m
+output
+
++nproc
+output
+
+===============================================
+ps--> processess
+
+ef--> full details
+
+|  (pipe) send output
+
+grep --> only mentioned pattern
+
+
+-->date  | grep  echo " Hello"
+o\p--> Hello, because date is default command in shell
+
+
+ps -ef | grep amazon
+
+all the details with 'amazon' in highlighted
+
+AWK
+
+ps -ef | grep amazon | awk -F " " '{print $4}'
+
+
+Set -x # debug mode
+
+set -e # exit the script when there is an error
+
+set - o pipefail
+
+Set -e and set -o pipefail we have to set them together
+
+Curl - retrieve the information from internet
+
+wget - download
+
+ Wget vs curl
+ 
+Curl directly show the output
+Wget download it into a file and we have to cat and see the file content
+
+find / -name filename
+
+ IF Loop
+a=4
+b=10
+
+If ( $a > $b)
+then 
+echo " a is greater"
+else
+echo " b is greater"
