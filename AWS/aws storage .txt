@@ -1,0 +1,25 @@
+aws storage types
+
+1.block 
+
+	instance store--> cache types--data is non-persistent-will gone afterrestart
+	EBS--> elastic block store--data is persistent
+
+2. object
+	
+	S3- simple storage service--> cost effective archival service using glacier
+	objects having unique identifiers
+
+3. file storage
+
+EFS--Elastic File System--serverless fully elastic file storafe
+EFS mostly use for linux servers due to NFS protocol
+
+Fsx for windows
+
+like our windows/mac/linux file system
+shared filesystem between servers and applications
+Managed
+Hierarchical storage-folders inside folder
+simple and convenience
+low cost

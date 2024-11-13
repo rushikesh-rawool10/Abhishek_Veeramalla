@@ -1,0 +1,30 @@
+AWS pipeline
+
+code deploy===
+
+create application
+
+there can be dfferent applications. each apliction treat as misco services.
+like in amazaon we have login/logout, transaction etc
+
+create ec2 instance for deployment
+use tags for ec2 
+need to install agent on ec2
+
+Install the CodeDeploy agent for Ubuntu Server
+
+https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-ubuntu.html 
+
+
+give permissions to ec2 instance
+for  that create a role
+searh code deploy service
+assign this role to ec2 instance
+again select that role, modify, attach policy --> ec2 full access
+restart agent
+
+in code deploy, create deployment group, to select on which ec2 instance/instances you want to deploy app.
+
+create deployment====>
+appspec.yml
+

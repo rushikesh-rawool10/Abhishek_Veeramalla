@@ -1,0 +1,31 @@
+AWS load balancers
+
+Application LB
+Network LB
+Gateway LB
+
+when you configured any LB, instead of accessing EC2, access LB
+
+basic technique is round robin provided all ec instances have same configuration
+
+there are 100's of LB Techniques
+some of are Nginx
+			F5
+			Envoy
+			
+Different LB acts on different layer of OSI Model
+
+application LB acts on Layer 7 i.e. application layer
+
+Network LB acts on Layer 4 i.e transport Layer
+
+7. Application Layer
+6. Presentation LAyer (SSL/TLS encryption)
+5. Session Layer (Session Information)
+4. Transport Layer
+3. Network Layer
+2. Data Link Layer
+1. Physical Layer
+
+Gateway LB====
+VPN or firewall

@@ -1,0 +1,6 @@
+aws eks
+
+manifest created inside eks willnot be used in google or azure, they are restricted to aws only
+
+
+EKS-- managed kubernetes solution fom AWS

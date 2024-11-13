@@ -1,0 +1,5 @@
+aws ecr
+
+Elastic container registry
+same like docker hub but ECR is private repository
+

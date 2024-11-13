@@ -1,0 +1,24 @@
+aws ecs
+
+ecs can use ec2 or fargate
+
+fargate is serverless like lambda
+
+task definition.yml like pod.yml
+
+ecs is cost effective than kubernetes
+
+=================================================
+aws cli should be configured
+
+copy github repo to local
+
+ecr login==>
+aws ecr GET LOGIN region - us-east-1 | docker login -username aws- password stdin () replace the rgistry_name(till amazon.com)
+
+docker build -t (aws ecr url):latest
+image will be build in local machine
+
+docker push (aws ecr url):latest
+
+
