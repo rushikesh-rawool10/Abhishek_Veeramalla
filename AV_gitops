@@ -1,0 +1,28 @@
+Gitops
+
+Gitops is a approach at continuous delivery 
+
+Gitops uses git as a single source of truth to deliver applications and infrastucture
+
+Gitops Principles
+
+Declarative
+Versioned and immutable
+pulled automatically
+continusousily reconciled
+
+
+===================================
+
+kubectl edit svc argocd-server -n argocd-server
+
+minikube service argocd-server -n argocd-server
+
+http://127.0.0.1:53221
+
+
+kubectl get secret -n argocd
+
+echo SECRET | base64 --decode
+
+argocd command reference for argocd CLI
