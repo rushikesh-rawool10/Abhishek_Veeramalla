@@ -1,0 +1,3 @@
+Hypervisor uses the concept of virtualization
+  virtualization--> creating virtual servers on the top of physical servers.
+  virtual machine is alogical isolation
