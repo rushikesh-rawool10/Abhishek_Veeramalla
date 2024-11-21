@@ -1,3 +1,4 @@
 Hypervisor uses the concept of virtualization
   virtualization--> creating virtual servers on the top of physical servers.
-  virtual machine is alogical isolation
+  virtual machine is a logical isolation
+each app has it's own operating system
