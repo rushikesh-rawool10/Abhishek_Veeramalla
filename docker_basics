@@ -1,4 +1,12 @@
 Hypervisor uses the concept of virtualization
-  virtualization--> creating virtual servers on the top of physical servers.
+  virtualization--> creating virtual servers on top of physical servers.
   virtual machine is a logical isolation
-each app has it's own operating system
+each app has its own operating system
+
+Docker containers are lightweight in nature, because they do not have a complete operating system.
+they use resources from the base operating system.
+containers have a minimal operating system--> base image.
+
+A container is a package that is a combination of application, required libraries/dependencies plus system dependancies
+
+
