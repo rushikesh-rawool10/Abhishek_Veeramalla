@@ -7,6 +7,6 @@ Docker containers are lightweight in nature, because they do not have a complete
 they use resources from the base operating system.
 containers have a minimal operating system--> base image.
 
-A container is a package that is a combination of application, required libraries/dependencies plus system dependancies
+A container is a package that is a combination of application, required libraries/dependencies plus system dependencies
 
 
