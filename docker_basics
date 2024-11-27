@@ -16,4 +16,7 @@ docker build   | images  containers | docker images stores
         run
         pull
 
+DOCKER LIFECYCLE
+dockerfile -> docker image--> docker container
+
 
