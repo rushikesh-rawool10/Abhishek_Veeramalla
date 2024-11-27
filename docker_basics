@@ -11,7 +11,7 @@ A container is a package that is a combination of application, required librarie
 
 DOCKER ARCHITECTURE
 docker client | docker host | docker registry
-docker commands | docker daemon | docker hub
+docker commands | docker daemon(dockerd) | docker hub
 docker build   | images  containers | docker images stores
         run
         pull
