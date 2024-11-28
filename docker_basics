@@ -37,5 +37,16 @@ from python/java/distroless
 copy --from build
 CMD [/app]
 
+=============================
+front end  stage
+
+-------------
+backend stage
+
+-----------
+final  stage
+
+stages can be countless but final should be minimalistic image
+
 
 
