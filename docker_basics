@@ -27,3 +27,15 @@ CMD arguments are re-configurable
 
 docker run -p 8000:8000 --> means map application port with ec2 instance port
 
+
+MULTISTAGE DOCKERFILE
+
+from ubuntu as build (alias)
+run
+
+from python/java/distroless
+copy --from build
+CMD [/app]
+
+
+
