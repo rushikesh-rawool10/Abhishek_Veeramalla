@@ -21,9 +21,9 @@ dockerfile -> docker image--> docker container
 
 ENTRYPOINT VS CMD
 
-entrypint arguments we can not override. the argument that we want to fix in the dockerfile, keep in entrypoint
+entrypint parameters we can not override. the parameter that we want to keep as fix/permanent in the dockerfile, keep it in entrypoint
 
-CMD arguments are re-configurable
+CMD parameters are re-configurable
 
 docker run -p 8000:8000 --> means map application port with ec2 instance port
 
