@@ -54,5 +54,13 @@ means cmd [/app]
 
 biggest advantages--> security and reduces container image size
 
+=================================
+bind mounts vs volumes
+
+in bind mount host storage will be fixed where as in volumes we can attach different types of volumes as per requirements like ec2,s3,nfs,
+read or write intensive
+
+
+
 
 
