@@ -19,4 +19,10 @@ docker build   | images  containers | docker images stores
 DOCKER LIFECYCLE
 dockerfile -> docker image--> docker container
 
+ENTRYPOINT VS CMD
+
+entrypint arguments we can not override. the argument that we want to fix in the dockerfile, keep in entrypoint
+
+CMD arguments are re-configurable
+
 
