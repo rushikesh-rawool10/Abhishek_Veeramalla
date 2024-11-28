@@ -49,4 +49,10 @@ final  stage
 stages can be countless but final should be minimalistic image
 
 
+distroless images only have runtime environment to run the application.
+means cmd [/app]
+
+biggest advantages--> security and reduces container image size
+
+
 
