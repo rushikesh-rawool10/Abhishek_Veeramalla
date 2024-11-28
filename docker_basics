@@ -60,6 +60,15 @@ bind mounts vs volumes
 in bind mount host storage will be fixed where as in volumes we can attach different types of volumes as per requirements like ec2,s3,nfs,
 read or write intensive
 
+docker volume create abhishek
+docker volume ls
+
+docker volume inspect abhishek- more details about volume
+
+docker volume rm abhishek
+
+
+docker run -d --mount source=abhishek(on local host), target=/app(in container), nginx:latest 
 
 
 
