@@ -34,7 +34,7 @@ from ubuntu as build (alias)
 run
 
 from python/java/distroless
-copy --from build
+copy --from build /app /app
 CMD [/app]
 
 =============================
