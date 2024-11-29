@@ -76,5 +76,15 @@ default networking-- bridge networking
 
 container having diff subnet and base host having diff subnet then they talk using veth (virtual ethernet) that is docker0
 
+second one is host network, where containers share the same base host network.( no security)
+
+docker network create secure-network
+
+--network=secure-network (custom bridge)
+
+docker run -d --name=finance --network=secure-network nginx:latest
+
+
+
 
 
