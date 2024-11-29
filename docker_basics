@@ -90,7 +90,7 @@ docker network create secure-network
 --network=secure-network (custom bridge)
 
 docker run -d --name=finance --network=secure-network nginx:latest
-this will have diff subnet
+this will have diff subnet(172.19.0.2)
 
 docker run -d --name=host_demo --network=host nginx:latest
 docker inspect container_name
