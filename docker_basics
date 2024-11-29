@@ -78,6 +78,13 @@ container having diff subnet and base host having diff subnet then they talk usi
 
 second one is host network, where containers share the same base host network.( no security)
 
+docker run -d --name login nginx:latest
+docker run -d --name logout nginx:latest
+
+docker inspect login
+docker inspect logout
+you will see, they are having same subnet (172.17.0.2  & 172.17.0.3)
+
 docker network create secure-network
 
 --network=secure-network (custom bridge)
