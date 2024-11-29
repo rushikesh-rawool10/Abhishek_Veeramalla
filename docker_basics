@@ -83,6 +83,11 @@ docker network create secure-network
 --network=secure-network (custom bridge)
 
 docker run -d --name=finance --network=secure-network nginx:latest
+this will have diff subnet
+
+docker run -d --name=host_demo --network=host nginx:latest
+docker inspect container_name
+you will not see any ip as it will share same base host ip
 
 
 
