@@ -1,0 +1,23 @@
+Docker add vs copy
+Add can copy the files from URL
+Copy command copy the files from host system into the container
+
+Multistage docker build
+Multistage build allows you to build your docker container in
+Multiple stages allowing you to copy artifacts from one stage to another. The major advantage of this is to build light weight container.
+
+Distroless Images
+Distroless Images contain only your application and it's runtime dependencies with Very minimum operating system libraries. They do not contain package managers, shells or any other programs in Linux distributions.
+They are very small and light weight images
+
+Challenges with Docker
+
+Docker daemon is a single point of failure
+Docker daemon uses root user which is security threat
+Resource constraints-  if you run too many containers on single machine you may face slow performance or crash
+
+How to secure docker container
+
+Use of distroless Images
+Use multistage docker build
+Use custom bridge network for isolation
