@@ -1,4 +1,6 @@
 Jenkins
+why pipeline?
+in pipeline we write code in groovy syntax, as it is a code we can store it on version control system and can use accordingly.
 
 
 		Jenkins
