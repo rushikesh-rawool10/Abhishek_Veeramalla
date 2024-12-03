@@ -54,4 +54,37 @@ Jenkinsfile can be one of two of below types
 Declarative Pipeline (Requires blue ocean plugin to use graphical pipeline editor)
 Scripted Pipeline
 
+multi-stage & multi-agent
+below is just an example
+
+pipeline {
+  agent none
+  stages {
+    stage('Back-end') {
+      agent {
+        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+      }
+      steps {
+        sh 'mvn --version'
+      }
+    }
+    stage('Front-end') {
+      agent {
+        docker { image 'node:16-alpine' }
+      }
+      steps {
+        sh 'node --version'
+      }
+    }
+stage('DB') {
+      agent {
+        docker { image 'Mysql:8.0' }
+      }
+      steps {
+        sh 'Select * from XYZ'
+      }
+    }
+  }
+}
+
  
