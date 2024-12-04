@@ -10,6 +10,10 @@ in the pipeline, we write code in groovy syntax, as it is a code we can store it
 
 4. automation testing-> check all the functionality, end to end manner
 
+5. reports
+
+6. deployments
+
 		Jenkins
 		  |
 		  Maven---> Build code/ unit testing using Junit
