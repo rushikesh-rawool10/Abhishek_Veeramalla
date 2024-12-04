@@ -1,7 +1,14 @@
-Jenkins
+Jenkins,
 why pipeline?
-in pipeline we write code in groovy syntax, as it is a code we can store it on version control system and can use accordingly.
+in the pipeline, we write code in groovy syntax, as it is a code we can store it on the version control system and can use it accordingly.
 
+1. unit-testing-->testing any functionality of the app
+
+2. static code analysis--> syntax check, variables declarations, code format
+
+3. code quality/ vulnerability 
+
+4. automation testing-> check all the functionality, end to end manner
 
 		Jenkins
 		  |
