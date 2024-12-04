@@ -1,2 +1,8 @@
 argo image updater--> 1. monitoring the container registry(dockerhub)
                       2. updating the github repo
+
+How CD works?
+as soon as CI process is completed, a new image version is updated in your container registry.
+Argo image updater continuously monitors the container registry, it will go to the application's manifest git repo( having pod.yml, deployment.yml, helm charts).
+Argo image updater updates the application's manifest repo with new container image(new tag)
+Argo CD which is kubernetes controller, always make a sync between application's manifest git repo and k8's cluster
