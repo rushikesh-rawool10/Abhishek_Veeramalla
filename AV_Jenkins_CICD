@@ -8,3 +8,11 @@ Argo image updater updates the application's manifest repo with a new container 
 Argo CD(GitOps Tool) which is Kubernetes controller, always makes a sync between the application's manifest git repo and k8s cluster
 By using the git ops approach using Argo CD we can achieve below:
 Argo cd always makes a sync between the git repo and k8's cluster, when someone tries to make changes into k8's cluster directly, Argo cd will identify that, it checks with the git repo and it will not match so it will override changes as per git repo.
+
+===============================================================================
+
+Use docker agents in pipeline instead of another ec2 instance as a slave.
+main purpose of docker agent is to lesser the configuration.
+If we use multiple slave instances then we have to do installations of tools like maven/docker on every instance and aws cost will increase.
+If we use docker container, we have write it once,  whenever container gets created same time configuration will  be created and container will be deleted afer executin of his jenkins files
+  
