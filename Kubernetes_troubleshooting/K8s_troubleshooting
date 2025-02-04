@@ -1,0 +1,47 @@
+1. Image pull back of
+
+Due to wrong image name or image doesn't exist
+Due to private image repository
+
+To solve private image repository issue
+Use image PullSecret inside spec: in deployment.yml
+
+First it will throw error image pull
+Then it will wait for sometime, this issue can be because of network issue.
+It will try to pull one more time again wait for sometime.
+Incrementally it will increase wait time. This is called back off delay. That's why this error is called image pull back off.
+
+Kubectl create secret docker-registry (secret name) --docker -server=(your-registry-server) --docker-username=(your-name) --docker-password=(your-password) --docker-email(your-mail)
+
+
+----
+Crash loop back off
+Due to multiple reasons
+
+Misconfigurations- wrong environmental variables
+Persistence volume that doesn't exist
+
+Errors in liveness probe- misconfigurations in liveness probe
+
+The memory limits are too low
+
+Wrong command line arguments
+
+Bugs and exceptions
+
+Example- wrong CMD command in docker file
+
+
+Liveness probe
+The process of kublet identifes pod is healthy or not
+
+Readyness probe
+Is used to check whether your pod is ready to accept traffic or not
+
+To avoid out of memory issues-
+
+At namespace level use resource quota- mad resources that a namespace can consume
+
+At pod level, Resource limits are use- max resources that a pod can consume
+. don't increase CPU or MEMORY directly, it is not the solution and a very bad practice.
+Devloper should identify the root cause on why the pod is taking more resources than expected
