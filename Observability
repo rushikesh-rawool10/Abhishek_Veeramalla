@@ -1,0 +1,3 @@
+metrics --historical information   -->Prometheus
+Logs - timestamp-based events       -->ELK
+traces -- complete request flow     --->jaegar
