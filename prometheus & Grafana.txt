@@ -38,6 +38,29 @@ inside scape_configs:
 	 - targets:
 	   - minikube_ip: nodeport_of_kubeConfigs
 
+========================================================NEW===========================
+INstallation of prometheus and grafana
+
+helm repo add prometheus-community
+helm repo update
+helm install prometheus prometheus-community
+
+k get svc
+expose prometheus-server service or in cluser use ingress to discover service
+
+GRAFANA---
+
+helm repo add grafana
+helm repo update
+helm install grafana
+
+k export service grafana or in cluser use ingress to discover service
+
+
+ADD Prometheus as Data source in Grafana
+create dashboards
+
+
 
 
 
