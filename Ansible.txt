@@ -181,8 +181,16 @@ Ansible roles
 
 ansible-galaxy role init  kubernetes
 
+========================
+
+controller==
+ssh-keygen
+
+ssh-copy-id -i id_rsa_pub user@ip of target
+
 
 	
 		
 		
+
 	
