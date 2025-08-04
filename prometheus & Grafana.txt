@@ -82,7 +82,7 @@ scrape_configs:
 configure prometheus and graafana
 loki
 how does Prometheus collect metrics
-what is log rotate job and how does it work
+
 What are data sources for Grafana,
 
 -->
@@ -90,6 +90,7 @@ What are data sources for Grafana,
 - Prometheus reads its prometheus.yml config file to find targets.
 - It sends HTTP GET requests to each target’s /metrics endpoint.
 - The response contains raw metric data, which Prometheus stores in its time-series database (TSDB).
+
 
 
 
