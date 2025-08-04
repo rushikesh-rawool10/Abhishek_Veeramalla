@@ -99,5 +99,17 @@ stage('DB') {
     }
   }
 }
+=====================adding node=====
 
+manage jenkins
+add node
+launch method-- launch agent via ssh
+kind: ssh username with private key
+enter private key os target server
+
+--on Target server do ssh-keygen
+
+cd .ssh
+copy pub key of target server in authorized keys of target server iteself
  
+
