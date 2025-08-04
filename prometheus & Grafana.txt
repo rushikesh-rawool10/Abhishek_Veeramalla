@@ -60,6 +60,39 @@ k export service grafana or in cluser use ingress to discover service
 ADD Prometheus as Data source in Grafana
 create dashboards
 
+---------how to add new targets in prometheus
+
+go to prometheus.yml
+
+scrape_configs:
+  - job_name: 'my-new-targets'
+    static_configs:
+      - targets: ['192.168.1.10:9100', '192.168.1.11:9100']
+
+or
+
+scrape_configs:
+  - job_name: 'web-servers'
+    static_configs:
+      - targets: ['web1.local:8080', 'web2.local:8080']
+        labels:
+          group: 'frontend'
+
+=======================Questions====
+configure prometheus and graafana
+loki
+how does Prometheus collect metrics
+what is log rotate job and how does it work
+What are data sources for Grafana,
+
+-->
+. Prometheus Scrapes Metrics
+- Prometheus reads its prometheus.yml config file to find targets.
+- It sends HTTP GET requests to each target’s /metrics endpoint.
+- The response contains raw metric data, which Prometheus stores in its time-series database (TSDB).
+
+
+
 
 
 
